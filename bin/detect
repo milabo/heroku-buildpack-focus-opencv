@@ -1,6 +1,6 @@
 #!/bin/sh
 
-printf "+focus\n"
+printf "+focus ( opencv )\n"
 
 #printf "                            ____________________   \n"
 #printf "        ,------,           /                    \" \n"

@@ -22,19 +22,12 @@ mkdir -p $PROFILE_DIR
 
 # Build libraries
 main_indent "build step by step"
-. $BIN_DIR/steps/compile-mecab       $BUILD_DIR $LIB_DIR $INSTALL_DIR $CACHE_DIR $PROFILE_DIR # mecab buildpack
-. $BIN_DIR/steps/compile-tesseract   $BUILD_DIR $LIB_DIR $INSTALL_DIR $CACHE_DIR $PROFILE_DIR # tesseract buildpack
 . $BIN_DIR/steps/compile-opencv      $BUILD_DIR $LIB_DIR $INSTALL_DIR $CACHE_DIR $PROFILE_DIR # opencv buildpack
-. $BIN_DIR/steps/compile-imagemagick $BUILD_DIR $LIB_DIR $INSTALL_DIR $CACHE_DIR $PROFILE_DIR # imagemagick buildpack
 
 # Remove unnecessary files
 main_indent "remove unnecessary files"
 cd $INSTALL_DIR
 find . -name "*.a" -exec rm {} \;
-#find . -name "*.h" -exec rm {} \;
-#find . -name "*.c" -exec rm {} \;
-#find . -name "*.hpp" -exec rm {} \;
-#find . -name "*.cpp" -exec rm {} \;
 
 # Store binaries
 (cd $HOME && tar cf - .vendor) | (cd $BUILD_DIR && tar xf -)
